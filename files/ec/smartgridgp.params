@@ -16,7 +16,7 @@ gp.fs.0.name = f0
 gp.fs.0 = agentwise.evo4smartgrid.GPFunctions
 
 
-
+breed.elite.0 = 			1
 
 seed.0 = 123
 #
