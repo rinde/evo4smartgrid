@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>evo4smartgrid</groupId>
+  <artifactId>evo4smartgrid</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>de.congrace</groupId>
+  		<artifactId>exp4j</artifactId>
+  		<version>0.2.9</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>edu.gmu.cs</groupId>
+  		<artifactId>ecj</artifactId>
+  		<version>20.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>evo4mas</groupId>
+  		<artifactId>evo</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.10</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
+</project>
