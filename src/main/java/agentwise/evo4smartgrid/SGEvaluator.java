@@ -5,6 +5,8 @@ package agentwise.evo4smartgrid;
 
 import static java.util.Arrays.asList;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Collection;
 
 import rinde.cloud.javainterface.Computer;
@@ -17,26 +19,21 @@ import rinde.evo4mas.evo.gp.GPProgram;
  * 
  */
 public class SGEvaluator extends GPEvaluator<SGCompJob, GPComputationResultImpl, SGContext> {
+	private static final long serialVersionUID = 542274712463716913L;
 
-	private static final long serialVersionUID = 3803572332306084268L;
-	// Scenario
-	final double[] requestedEnergy = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
-	final int[] requestedTimes = { 6, 6, 6, 7, 7, 7, 9, 9, 10, 10 };
-	final double maxPower = 3;
-	final int cars = 10;
-	final int tsim = 10;
+	protected final SmartGridScenario scenario;
 
-	// Requested path
-	final double[] requestedPath = { 0, 10, 20, 33, 33, 33, 53, 70, 82, 94, 100 };
-	// Requested profile
-	final double[] requestedProfile = { 10, 10, 13, 0, 0, 20, 17, 12, 12, 6 };
+	public SGEvaluator() {
+		try {
+			scenario = SmartGridScenario.fromJson(new FileReader("files/scenarios/example.scen"));
+		} catch (final FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	@Override
 	protected Collection<SGCompJob> createComputationJobs(GPProgram<SGContext> program) {
-		// this would be the place where scenarios are loaded from disk,
-		// currently just using one hard coded scenario
-		return asList(new SGCompJob(program, new SmartGridScenario(requestedEnergy, requestedTimes, maxPower, cars,
-				tsim, requestedPath, requestedProfile)));
+		return asList(new SGCompJob(program, scenario));
 	}
 
 	@Override
